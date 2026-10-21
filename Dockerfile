@@ -4,8 +4,9 @@ FROM nginx:1.31-alpine
 RUN apk upgrade --no-cache
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY index.html styles.css script.js /usr/share/nginx/html/
+COPY index.html 404.html 50x.html styles.css script.js /usr/share/nginx/html/
 COPY assets /usr/share/nginx/html/assets
+COPY legal /usr/share/nginx/html/legal
 
 EXPOSE 80
 

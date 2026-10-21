@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check script.js && node --check server.mjs",
+    "check": "node --check script.js && node --check server.mjs && node --check legal/legal.js",
     "test": "node --test",
     "start": "node server.mjs"
   }
