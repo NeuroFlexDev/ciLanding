@@ -26,3 +26,10 @@ test('all local HTML assets exist inside the repository', () => {
     assert.ok(existsSync(assetPath), `${reference} does not exist`);
   }
 });
+
+test('platform entry points lead to login while public registration is closed', () => {
+  const links = [...html.matchAll(/href="(\/auth[^"]*)"/g)].map(match => match[1]);
+  assert.ok(links.length >= 3, 'header and content need platform entry points');
+  assert.ok(links.every(href => href === '/auth'), 'landing must not force closed registration');
+  assert.match(html, /Войти в платформу/);
+});
