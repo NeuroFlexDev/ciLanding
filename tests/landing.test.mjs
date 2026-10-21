@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { dirname, resolve, sep } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
@@ -22,7 +22,7 @@ test('all local HTML assets exist inside the repository', () => {
 
   for (const reference of references) {
     const assetPath = resolve(repositoryRoot, reference.split('#')[0].replace(/^(?:\.\/|\/)/, ''));
-    assert.ok(assetPath.startsWith(`${repositoryRoot}/`), `${reference} escapes the repository`);
+    assert.ok(assetPath.startsWith(`${repositoryRoot}${sep}`), `${reference} escapes the repository`);
     assert.ok(existsSync(assetPath), `${reference} does not exist`);
   }
 });
